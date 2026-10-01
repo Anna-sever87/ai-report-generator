@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block content %}
+  <h2>Краткое резюме</h2>
+  {{ m.text_block(data.summary) }}
+
+  <h2>Основные сведения</h2>
+  <table class="facts">
+    <tr><th>Клиент</th><td>{{ data.client_name }}</td></tr>
+    <tr><th>Тема разговора</th><td>{{ data.topic }}</td></tr>
+    <tr><th>Настроение клиента</th><td>{{ data.mood }}</td></tr>
+    <tr><th>Желаемые сроки</th><td>{{ data.desired_deadline }}</td></tr>
+    <tr><th>Бюджет</th><td>{{ data.budget }}</td></tr>
+  </table>
+
+  <h2>Основной запрос</h2>
+  {{ m.text_block(data.main_request) }}
+
+  <h2>Основные пожелания к результату</h2>
+  {{ m.bullets(data.key_requirements, not_specified) }}
+
+  <h2>Рекомендуемые следующие шаги</h2>
+  {{ m.bullets(data.next_steps, not_specified) }}
+{% endblock %}

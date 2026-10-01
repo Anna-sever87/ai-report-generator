@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block content %}
+  <h2>Краткое резюме</h2>
+  {{ m.text_block(data.summary) }}
+
+  <h2>Основные сведения</h2>
+  <table class="facts">
+    <tr><th>Кандидат</th><td>{{ data.candidate_name }}</td></tr>
+    <tr><th>Должность</th><td>{{ data.position }}</td></tr>
+    <tr><th>Зарплатные ожидания</th><td>{{ data.salary_expectations }}</td></tr>
+    <tr><th>Готовность приступить</th><td>{{ data.availability }}</td></tr>
+  </table>
+
+  <h2>Релевантный опыт</h2>
+  {{ m.text_block(data.experience) }}
+
+  <h2>Ключевые навыки</h2>
+  {{ m.bullets(data.key_skills, not_specified) }}
+
+  <h2>Сильные стороны</h2>
+  {{ m.bullets(data.strengths, not_specified) }}
+
+  <h2>Риски и вопросы для уточнения</h2>
+  {{ m.bullets(data.concerns, not_specified) }}
+
+  <h2>Предварительная рекомендация</h2>
+  {{ m.text_block(data.recommendation) }}
+
+  <h2>Рекомендуемые следующие шаги</h2>
+  {{ m.bullets(data.next_steps, not_specified) }}
+{% endblock %}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>{{ title }}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 18mm 20mm 18mm;
+    @bottom-left {
+      content: "Отчёт сформирован автоматически";
+      font-family: Arial, "Liberation Sans", "DejaVu Sans", sans-serif;
+      font-size: 9pt;
+      color: #000000;
+    }
+    @bottom-right {
+      content: "Стр. " counter(page) " из " counter(pages);
+      font-family: Arial, "Liberation Sans", "DejaVu Sans", sans-serif;
+      font-size: 9pt;
+      color: #000000;
+    }
+  }
+  body {
+    font-family: Arial, "Liberation Sans", "DejaVu Sans", sans-serif;
+    font-size: 12pt;
+    line-height: 1.35;
+    color: #000000;
+    margin: 0;
+  }
+  h1 {
+    font-size: 20pt;
+    margin: 0 0 4mm 0;
+    text-align: center;
+  }
+  h2 {
+    font-size: 14pt;
+    margin: 6mm 0 2mm 0;
+    padding-bottom: 1mm;
+    border-bottom: 1px solid #000000;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.meta {
+    margin-bottom: 2mm;
+    font-size: 10pt;
+  }
+  table.meta td {
+    padding: 1mm 2mm 1mm 0;
+    border: none;
+  }
+  table.meta td.label {
+    width: 35mm;
+    font-weight: bold;
+  }
+  table.facts th, table.facts td {
+    border: 1px solid #000000;
+    padding: 2mm 3mm;
+    vertical-align: top;
+    text-align: left;
+  }
+  table.facts th {
+    width: 55mm;
+    background: #eeeeee;
+    font-weight: bold;
+  }
+  table.facts tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .text {
+    white-space: pre-line;
+    margin: 0;
+  }
+  ul {
+    margin: 0;
+    padding-left: 6mm;
+  }
+  li {
+    margin-bottom: 1.5mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .empty {
+    margin: 0;
+    font-style: italic;
+  }
+  .note {
+    margin: 2mm 0 0 0;
+    padding: 2mm 3mm;
+    border: 1px solid #000000;
+    font-size: 9pt;
+  }
+</style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <table class="meta">
+    <tr><td class="label">Дата отчёта</td><td>{{ meta.report_date }}</td></tr>
+    <tr><td class="label">Источник</td><td>{{ meta.source_name }}</td></tr>
+  </table>
+  <p class="note">{{ disclaimer }}</p>
+  {% block content %}{% endblock %}
+</body>
+</html>
